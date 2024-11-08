@@ -1,0 +1,21 @@
+package com.bookstore.resources;
+
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.MediaType;
+
+import java.security.SecureRandom;
+import java.util.stream.DoubleStream;
+
+@Path("/book")
+public class BookResource {
+    @GET
+    @Produces("text/plain")
+    public double getBookPrice(@QueryParam("isbn") String isbn) {
+        SecureRandom random = new SecureRandom();
+        DoubleStream bookPrice = random.doubles(1000, 2000);
+        return bookPrice.findFirst().getAsDouble();
+    }
+}

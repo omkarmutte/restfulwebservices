@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+        version="4.0"
+        xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+        xmlns:javaee="http://xmlns.jcp.org/xml/ns/javaee"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <display-name>Archetype Created Web Application</display-name>
+    <servlet>
+        <servlet-name>jersey</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <!--this is acting as jaxrs runtime engine which identifies the appropriate resource
+        to invoke and inject the in coming values-->
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <!--with the help of "jersey.config.server.provider.packages" and "com.bookstore.resource"
+            in this package i kept my resource classes/rest endpoints/api service classes/ web resoruce classses-->
+            <param-value>com.bookstore.resources</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jersey</servlet-name>
+        <!--/api/* indicates the url pattern follow this url pattern
+        https://localhost:8080/bookstore/api/book -->
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+</web-app>
